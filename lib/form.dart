@@ -10,7 +10,7 @@ Future<Montre> createMontre(
     String title, String image, String prix, String description) async {
   final response = await http.post(
       Uri.parse(
-          'https://my-json-server.typicode.com/AntoineBrevet/MontresJson/montres'),
+          'https://my-json-server.typicode.com/maxencelgy/my-json-montres/montres/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8'
       },
@@ -50,6 +50,7 @@ class _FormWidgetState extends State<FormWidget> {
       ),
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           leading: IconButton(
             icon: const Icon(Icons.home),
             onPressed: () {
@@ -62,6 +63,7 @@ class _FormWidgetState extends State<FormWidget> {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(8),
           child: (_futureMontre == null) ? buildColumn() : buildFutureBuilder(),
+
         ),
       ),
     );
@@ -71,6 +73,10 @@ class _FormWidgetState extends State<FormWidget> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        Text(
+          'Ajouter une montre',
+          style: TextStyle(fontSize: 24),
+        ),
         TextField(
           controller: _controller_title,
           decoration: const InputDecoration(hintText: 'Entre un titre'),
@@ -98,7 +104,7 @@ class _FormWidgetState extends State<FormWidget> {
                         _controller_description.text);
                   })
                 },
-            child: const Text('Crée un Montre'))
+            child: const Text('Insert une Montre'))
       ],
     );
   }
